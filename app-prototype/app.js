@@ -106,8 +106,9 @@ if(c=="ph")for(let i=0;i<8;i++)d["p"+i]=gps();
 if(c=="sign")Object.assign(d,{res:q?"Pass":"Approved",cno:""+(300+Math.floor(Math.random()*90)),sign:true,phys:true,wa:true});
 render()}
 /* ---------- MIS portal ---------- */
-const NAV=[["dash","Dashboard"],["qic","QIC records"],["dic","DIC records"],["disc","Discrepancies"],["rep","Reports"],["cfg","Machine-type config"]];
-function mis(){return `<div class=nav>${NAV.map(n=>`<button class="${S.view==n[0]?"on":""}" onclick="S.view='${n[0]}';S.sel=null;render(1)">${n[1]}</button>`).join("")}</div>`+({dash,qic:()=>rec("qic"),dic:()=>rec("dic"),disc,rep,cfg}[S.view])()}
+const WEBGIS_URL="../webgis/index.html";
+const NAV=[["dash","Dashboard"],["qic","QIC records"],["dic","DIC records"],["disc","Discrepancies"],["rep","Reports"],["cfg","Machine-type config"],["map","Map View ↗"]];
+function mis(){return `<div class=nav>${NAV.map(n=>n[0]=="map"?`<button onclick="window.open(WEBGIS_URL,'_blank','noopener')">${n[1]}</button>`:`<button class="${S.view==n[0]?"on":""}" onclick="S.view='${n[0]}';S.sel=null;render(1)">${n[1]}</button>`).join("")}</div>`+({dash,qic:()=>rec("qic"),dic:()=>rec("dic"),disc,rep,cfg}[S.view])()}
 const tg=x=>x?`<span class="tag ${x=="Approved"?"":x=="Deferred"?"r":"w"}">${x}</span>`:`<span class="tag w">—</span>`;
 function dash(){const a=M.filter(m=>m.qicStatus=="Approved").length,d=M.filter(m=>m.dicStatus=="Approved").length,ds=[...new Set(M.map(m=>m.div))],mx=Math.max(...ds.map(x=>M.filter(m=>m.div==x).length));
 return `<div class=kpis><div class=kpi><b>${M.length}</b>Machines tracked</div><div class=kpi><b>${M.filter(m=>m.qicStatus).length}</b>QIC inspected (${a} approved)</div><div class=kpi><b>${a-d}</b>Awaiting delivery</div><div class=kpi><b>${d}</b>DIC approved</div><div class=kpi><b>${M.filter(m=>m.open).length}</b>Open discrepancies</div></div>

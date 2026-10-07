@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>PCAP WebGIS — Map View</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="webgis.css">
+</head><body>
+<header class="top">
+  <div class="brand"><b>PCAP Farm Machinery · Map View</b><span>Super Seeder · demo data</span></div>
+  <div class="bar">
+    <div class="search"><input id="q" type="search" placeholder="Search Machine ID, code, farmer, CNIC, IMEI" autocomplete="off"><ul id="sug" hidden></ul></div>
+    <select id="fDist" title="District"><option value="">All districts</option></select>
+    <select id="fTeh" title="Tehsil" disabled><option value="">All tehsils</option></select>
+    <select id="fStat" title="Status"><option value="">All statuses</option><option>Approved</option><option>Deferred</option><option>Pending</option></select>
+    <select id="fType" title="Inspection type"><option value="">QIC + DIC</option><option>QIC</option><option>DIC</option></select>
+    <label>From <input id="fFrom" type="date"></label>
+    <label>To <input id="fTo" type="date"></label>
+    <button id="reset" class="btn alt">Reset</button>
+  </div>
+</header>
+<div class="wrap">
+  <main>
+    <div id="map"></div>
+    <div class="charts">
+      <div class="card"><h3>Overall status <small id="cnt"></small></h3><div class="cv"><canvas id="pie"></canvas></div></div>
+      <div class="card"><h3>Status by district</h3><div class="cv"><canvas id="bar"></canvas></div></div>
+    </div>
+  </main>
+  <aside id="panel" class="closed">
+    <button id="tgl" class="tgl" title="Toggle details panel">‹</button>
+    <div class="ph"><b>Feature details</b><button id="close" class="x" title="Close">×</button></div>
+    <div id="det" class="det"><p class="note">Click a machine pin or search to see its attributes and photos.</p></div>
+  </aside>
+</div>
+<div id="lb" hidden><button class="x" title="Close">×</button><img alt=""><p></p></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="webgis.js" defer></script>
+</body></html>
