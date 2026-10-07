@@ -1,0 +1,1007 @@
+{
+  "PR": [
+    {
+      "n": 1,
+      "g": "General",
+      "name": "Application",
+      "req": "Sow wheat or other crops in rice/maize or other stubble fields",
+      "f": []
+    },
+    {
+      "n": 2,
+      "g": "General",
+      "name": "Linkage Cat. II (Appendix-A dimensions)",
+      "req": "T1 16-17, W3 50-65, T2 10-25, H 610-700, S 650-825 mm",
+      "f": [
+        "T1 mm",
+        "W3 mm",
+        "T2 mm",
+        "H mm",
+        "S mm"
+      ]
+    },
+    {
+      "n": 3,
+      "g": "General",
+      "name": "Working width",
+      "req": "1950 mm",
+      "f": [
+        "mm"
+      ]
+    },
+    {
+      "n": 4,
+      "g": "General",
+      "name": "No. of rows",
+      "req": "12 (11 inside + 1 outside)",
+      "f": [
+        "Inside rows",
+        "Outside rows"
+      ]
+    },
+    {
+      "n": 5,
+      "g": "General",
+      "name": "Rotor speed",
+      "req": "215-300 rpm @ 540 PTO rpm",
+      "f": [
+        "rpm"
+      ]
+    },
+    {
+      "n": 6,
+      "g": "General",
+      "name": "Seed & fertilizer rate",
+      "req": "Adjustable via calibrated screw-type side wheels",
+      "f": []
+    },
+    {
+      "n": 7,
+      "g": "General",
+      "name": "UJ shaft",
+      "req": "1 No., 38-39 mm cross bearing",
+      "f": [
+        "Bearing mm"
+      ]
+    },
+    {
+      "n": 8,
+      "g": "General",
+      "name": "Tractor power",
+      "req": "≥ 65 hp",
+      "f": []
+    },
+    {
+      "n": 9,
+      "g": "General",
+      "name": "Detachability",
+      "req": "38 x 38 x 2-3 mm square pipe",
+      "f": [
+        "Pipe mm",
+        "Thick mm"
+      ]
+    },
+    {
+      "n": 10,
+      "g": "Overall dimensions",
+      "name": "Length",
+      "req": "1600 mm",
+      "f": [
+        "mm"
+      ]
+    },
+    {
+      "n": 11,
+      "g": "Overall dimensions",
+      "name": "Width",
+      "req": "2300 mm",
+      "f": [
+        "mm"
+      ]
+    },
+    {
+      "n": 12,
+      "g": "Overall dimensions",
+      "name": "Height",
+      "req": "1400 mm",
+      "f": [
+        "mm"
+      ]
+    },
+    {
+      "n": 13,
+      "g": "Frame assembly",
+      "name": "Frame",
+      "req": "MS square pipe 60x60 mm, 5-6 mm thick",
+      "f": [
+        "Pipe mm",
+        "Thick mm"
+      ]
+    },
+    {
+      "n": 14,
+      "g": "Frame assembly",
+      "name": "Side plates",
+      "req": "MS plate 8-9 mm thick",
+      "f": [
+        "Plate mm"
+      ]
+    },
+    {
+      "n": 15,
+      "g": "Frame assembly",
+      "name": "Top cover",
+      "req": "MS formed plate 3-4 mm thick",
+      "f": [
+        "Plate mm"
+      ]
+    },
+    {
+      "n": 16,
+      "g": "Frame assembly",
+      "name": "Top cover supports",
+      "req": "MS 6-8 mm plates",
+      "f": [
+        "Plate mm"
+      ]
+    },
+    {
+      "n": 17,
+      "g": "Frame assembly",
+      "name": "Mast mounting brackets",
+      "req": "MS 8-10 mm plates",
+      "f": [
+        "Bracket mm"
+      ]
+    },
+    {
+      "n": 18,
+      "g": "Three-point hitch",
+      "name": "Mast frame",
+      "req": "MS plate 8-9 mm, yoke prongs 17 mm thick",
+      "f": [
+        "Plate mm",
+        "Prong mm"
+      ]
+    },
+    {
+      "n": 19,
+      "g": "Three-point hitch",
+      "name": "Lower hitch",
+      "req": "MS clevis prongs 10 mm; CI clevis prongs 15-25 mm",
+      "f": [
+        "MS mm",
+        "CI mm"
+      ]
+    },
+    {
+      "n": 20,
+      "g": "Power transmission",
+      "name": "Gear box",
+      "req": "Cast iron, air vent, two-speed, crown pinion and spur gear set",
+      "f": []
+    },
+    {
+      "n": 21,
+      "g": "Power transmission",
+      "name": "Power transmission shaft",
+      "req": "60 mm dia (bearing size), safety cover pipe 3-4 mm wall, 2-4 clamps, bearing and oil seal",
+      "f": [
+        "Dia mm",
+        "Pipe mm",
+        "Wall mm",
+        "Clamps nos."
+      ]
+    },
+    {
+      "n": 22,
+      "g": "Power transmission",
+      "name": "Side gear train",
+      "req": "Three spur gears",
+      "f": []
+    },
+    {
+      "n": 23,
+      "g": "Rotary hoe",
+      "name": "Rotor pipe",
+      "req": "Seamless MS pipe, OD 85-90 mm, wall 6 mm, forged axle ends",
+      "f": [
+        "OD mm",
+        "Wall mm",
+        "Axle end"
+      ]
+    },
+    {
+      "n": 24,
+      "g": "Rotary hoe",
+      "name": "Blade mounting plate",
+      "req": "MS 230-235 mm dia, 10-12 mm thick",
+      "f": [
+        "Dia mm",
+        "Thick mm"
+      ]
+    },
+    {
+      "n": 25,
+      "g": "Rotary hoe",
+      "name": "Blades (hardness test on sub-sample)",
+      "req": "54 Nos. J-type, HRC ≥ 40",
+      "f": [
+        "Nos.",
+        "Type",
+        "HRC"
+      ]
+    },
+    {
+      "n": 26,
+      "g": "Rotary hoe",
+      "name": "Parking stand (optional)",
+      "req": "Telescopic 38x38x2-3 mm pipe or 38 mm dia GI/MS, 3 mm wall",
+      "f": [
+        "Pipe mm",
+        "Thick mm"
+      ]
+    },
+    {
+      "n": 27,
+      "g": "Furrow opener / coulter",
+      "name": "Coulter frame",
+      "req": "MS square pipe 60x60 mm, 5-6 mm, adjustable with side plates",
+      "f": [
+        "Pipe mm",
+        "Wall mm",
+        "Adjustable"
+      ]
+    },
+    {
+      "n": 28,
+      "g": "Furrow opener / coulter",
+      "name": "Front coulter discs",
+      "req": "2 Nos., 350-355 mm dia, 4-5 mm thick, adjustable depth",
+      "f": [
+        "Material",
+        "Nos.",
+        "Dia mm",
+        "Thick mm",
+        "Adjustable"
+      ]
+    },
+    {
+      "n": 29,
+      "g": "Furrow opener / coulter",
+      "name": "Furrow opener",
+      "req": "22 Nos. SS coulters, dia 380 mm, 2.5-3.0 mm thick, pin 20-25 mm, adjustable placement with scrappers",
+      "f": [
+        "Material",
+        "Nos.",
+        "Dia mm",
+        "Thick mm",
+        "Pin dia mm",
+        "Adjustable"
+      ]
+    },
+    {
+      "n": 30,
+      "g": "Seed & fertilizer",
+      "name": "Seed & fertilizer box",
+      "req": "MS 18-gauge, V-shape, two equal boxes, 60 kg each",
+      "f": [
+        "Gauge",
+        "Shape",
+        "Volume kg"
+      ]
+    },
+    {
+      "n": 31,
+      "g": "Seed & fertilizer",
+      "name": "Metering units",
+      "req": "Fluted wheel type",
+      "f": [
+        "Type",
+        "Material"
+      ]
+    },
+    {
+      "n": 32,
+      "g": "Seed & fertilizer",
+      "name": "Drive wheel",
+      "req": "Fabricated: rim 50x6, spokes 50x5, 550 dia, lugs. Formed: 4 mm, 550 dia",
+      "f": [
+        "Type",
+        "Rim mm",
+        "Spoke mm",
+        "Dia mm",
+        "Thick mm"
+      ]
+    },
+    {
+      "n": 33,
+      "g": "Seed & fertilizer",
+      "name": "Drive wheel transmission",
+      "req": "Chain and sprockets 50#",
+      "f": [
+        "Chain #",
+        "Pitch mm"
+      ]
+    },
+    {
+      "n": 34,
+      "g": "Seed & fertilizer",
+      "name": "Fluted wheel drive shaft",
+      "req": "2 Nos. 16-22 mm dia, MS pipe 2 mm wall or cold drawn solid shaft",
+      "f": [
+        "Shaft type",
+        "Nos.",
+        "Dia mm",
+        "Thick mm"
+      ]
+    },
+    {
+      "n": 35,
+      "g": "Seed & fertilizer",
+      "name": "Seed & fertilizer tube",
+      "req": "Wire/nylon impregnated plastic tubes, clamped to metering units",
+      "f": []
+    },
+    {
+      "n": 36,
+      "g": "Press roller",
+      "name": "Press roller pipe and drive",
+      "req": "Chain: OD 160-165, 4 mm wall, 60# chain, >55 rpm. Or gear drive >55 rpm",
+      "f": [
+        "Drive type",
+        "OD mm",
+        "Thick mm",
+        "Pitch mm",
+        "Speed rpm",
+        "Gears"
+      ]
+    },
+    {
+      "n": 37,
+      "g": "Press roller",
+      "name": "Rear roller",
+      "req": "MS pipe 100 mm dia, 3 mm wall, adjustable, spring-loaded, soil scraper",
+      "f": [
+        "OD mm",
+        "Thick mm",
+        "Adjustable",
+        "Spring loaded",
+        "Scraper"
+      ]
+    },
+    {
+      "n": 38,
+      "g": "Press roller",
+      "name": "Skidders",
+      "req": "Adjustable both sides, 12 mm thick MS flat, 60 mm wide",
+      "f": [
+        "Thick mm",
+        "Width mm",
+        "Adjustable"
+      ]
+    },
+    {
+      "n": 39,
+      "g": "Press roller",
+      "name": "Inspection platform",
+      "req": "Textured/perforated sheet, two step",
+      "f": [
+        "Type",
+        "Steps"
+      ]
+    },
+    {
+      "n": 40,
+      "g": "Tracking system",
+      "name": "Tracker device",
+      "req": "As specified by Department, internal lithium battery with charging system",
+      "f": []
+    },
+    {
+      "n": 41,
+      "g": "Branding",
+      "name": "Branding",
+      "req": "Marking on one side of rotary hoe and on seed/fertilizer box mounting plate",
+      "f": []
+    },
+    {
+      "n": 42,
+      "g": "Miscellaneous",
+      "name": "Origin",
+      "req": "Local",
+      "f": []
+    },
+    {
+      "n": 43,
+      "g": "Miscellaneous",
+      "name": "Accessories",
+      "req": "Tool kit: insulated pliers, adjustable wrench, combination spanner set, chrome plated",
+      "f": []
+    },
+    {
+      "n": 44,
+      "g": "Miscellaneous",
+      "name": "O&M manual",
+      "req": "English and Urdu",
+      "f": [
+        "Draft approved"
+      ]
+    },
+    {
+      "n": 45,
+      "g": "Miscellaneous",
+      "name": "Paint",
+      "req": "Double coat red oxide/primer, Golden Yellow",
+      "f": [
+        "Colour"
+      ]
+    },
+    {
+      "n": 46,
+      "g": "Miscellaneous",
+      "name": "Nuts & bolts",
+      "req": "Zinc coated, imported spring washers or lock nuts",
+      "f": [
+        "Bolt coating",
+        "Washers",
+        "Lock nuts"
+      ]
+    },
+    {
+      "n": 47,
+      "g": "Miscellaneous",
+      "name": "Bearings",
+      "req": "European standard or equivalent (see Appendix-III)",
+      "f": []
+    },
+    {
+      "n": 48,
+      "g": "Miscellaneous",
+      "name": "Lubrication",
+      "req": "Proper lubricant of requisite grade and quantity (see Appendix-IV)",
+      "f": []
+    },
+    {
+      "n": 49,
+      "g": "Miscellaneous",
+      "name": "Warranty",
+      "req": "Free 1 year against mechanical defect; extended 5 years parts on payment",
+      "f": []
+    }
+  ],
+  "BR": [
+    [
+      "Multispeed gear box",
+      "Main drive shaft bearing"
+    ],
+    [
+      "Multispeed gear box",
+      "Pinion drive shaft bearing"
+    ],
+    [
+      "Multispeed gear box",
+      "Crown drive bearing"
+    ],
+    [
+      "Side gear train",
+      "Top gear bearing"
+    ],
+    [
+      "Side gear train",
+      "Middle gear bearing"
+    ],
+    [
+      "Rotary hoe",
+      "Drive end gear bearing"
+    ],
+    [
+      "Rotary hoe",
+      "Free end hub gear bearing (chain drive, press roller)"
+    ],
+    [
+      "Rotary hoe",
+      "Free end hub gear bearing (gear drive, press roller)"
+    ],
+    [
+      "Press roller (chain drive)",
+      "Press roller pipe bearings"
+    ],
+    [
+      "Press roller (chain drive)",
+      "Drive gear box bearings"
+    ],
+    [
+      "Press roller (chain drive)",
+      "Sprocket bearing"
+    ],
+    [
+      "Press roller (gear drive)",
+      "Press roller pipe bearings"
+    ],
+    [
+      "Press roller (gear drive)",
+      "Press roller gear box bearings"
+    ],
+    [
+      "Rear roller",
+      "Main pipe bearings"
+    ],
+    [
+      "Seed & fertilizer drive",
+      "Drive wheel hub bearing"
+    ],
+    [
+      "Seed & fertilizer drive",
+      "Sprockets bearing"
+    ],
+    [
+      "Seed & fertilizer drive",
+      "Metering units drive shaft bearings"
+    ],
+    [
+      "Coulter",
+      "Stainless steel coulters bearings"
+    ],
+    [
+      "Coulter",
+      "Front coulters bearing"
+    ]
+  ],
+  "LU": [
+    "Multi-speed gear box",
+    "Side gear train",
+    "Press roller drive gear box (chain drive)",
+    "Free end bearing hub (chain drive, press roller)",
+    "Gear box of gear drive (press roller)"
+  ],
+  "SAMP": [
+    [
+      100,
+      5,
+      0,
+      2,
+      0,
+      "Up to 100"
+    ],
+    [
+      300,
+      13,
+      1,
+      3,
+      0,
+      "101 to 300"
+    ],
+    [
+      500,
+      32,
+      3,
+      5,
+      0,
+      "301 to 500"
+    ],
+    [
+      1000,
+      50,
+      5,
+      8,
+      1,
+      "501 to 1000"
+    ],
+    [
+      1000000000,
+      80,
+      7,
+      13,
+      1,
+      "1001 and above"
+    ]
+  ],
+  "QP": [
+    "Sign board of manufacturing firm",
+    "Machine with tracker under mast frame (nobody beside it)",
+    "UID plate with FE signature",
+    "Punched 7-digit code",
+    "Decoded UID-plate QR (farmer, father, CNIC, mobile, implement, firm, district)",
+    "Decoded tracker QR (farmer, CNIC, implement)",
+    "Decoded tracker QR (location + lat/long of firm)",
+    "QIC members with manufacturer, in front of machine"
+  ],
+  "DP": [
+    "CNIC card of farmer or nominee (both sides)",
+    "Machine with tracker under mast (farmer/nominee beside it)",
+    "UID plate with FE signature",
+    "Punched 7-digit code",
+    "Decoded UID-plate QR",
+    "Decoded tracker QR (farmer, CNIC, implement)",
+    "Decoded tracker QR (location + lat/long of farmer)",
+    "DIC members with farmer, in front of machine"
+  ],
+  "FIRMS": {
+    "Al-Faisal Agro": [
+      "Lahore",
+      "Ferozewala Road, Sheikhupura",
+      "31.7132",
+      "74.2312"
+    ],
+    "Punjab Implements": [
+      "Faisalabad",
+      "Jaranwala Road, Faisalabad",
+      "31.4504",
+      "73.1350"
+    ],
+    "Umer Agricultural Industry": [
+      "Gujranwala",
+      "GT Road, Gujranwala",
+      "32.1877",
+      "74.1945"
+    ],
+    "Meezan Engineering": [
+      "Multan",
+      "Vehari Road, Multan",
+      "30.1575",
+      "71.5249"
+    ],
+    "Kisan Machinery": [
+      "Sahiwal",
+      "Okara Road, Sahiwal",
+      "30.6682",
+      "73.1114"
+    ]
+  },
+  "CONVQ": [
+    "Engr. Khalid Mehmood",
+    "Engr. Rana Sajid",
+    "Engr. Nadeem Abbas"
+  ],
+  "CONVD": [
+    "Engr. Asif Nawaz",
+    "Engr. M. Tariq",
+    "Engr. Shahbaz Ahmad"
+  ],
+  "LOTS": [
+    "25",
+    "50",
+    "75",
+    "100",
+    "150",
+    "200",
+    "250",
+    "300",
+    "400",
+    "500",
+    "750",
+    "1000",
+    "1500"
+  ],
+  "CMP": [
+    "Matches",
+    "Does not match",
+    "Not legible"
+  ],
+  "XR": [
+    "Farmer name differs",
+    "CNIC differs",
+    "Address differs",
+    "Machine ID differs",
+    "IMEI differs",
+    "Punched code differs",
+    "Other"
+  ],
+  "RSN": [
+    "Blade hardness below HRC 40",
+    "Dimensions out of specification",
+    "Welding / paint quality poor",
+    "Parameter missing or not as per spec",
+    "UID / tracker mismatch",
+    "Other"
+  ],
+  "BQ": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "6",
+    "8",
+    "10"
+  ],
+  "BN": [
+    "6204-2RS",
+    "6205-2RS",
+    "6206-2RS",
+    "6207-2RS",
+    "6208-2RS",
+    "6305-2RS",
+    "6306-2RS",
+    "30205",
+    "30206",
+    "Other"
+  ],
+  "BB": [
+    "SKF",
+    "FAG",
+    "NSK",
+    "NTN",
+    "Timken",
+    "Koyo",
+    "Local / other"
+  ],
+  "OG": [
+    "SAE 90",
+    "SAE 140",
+    "EP 90",
+    "EP 140",
+    "80W-90",
+    "85W-140",
+    "Other"
+  ],
+  "OQ": [
+    "0.5",
+    "1",
+    "1.5",
+    "2",
+    "2.5",
+    "3",
+    "4",
+    "5"
+  ],
+  "FN": [
+    "Muhammad Aslam",
+    "Riaz Ahmad",
+    "Ghulam Nabi",
+    "Tahir Mehmood",
+    "Zahid Iqbal",
+    "Shahid Ali",
+    "Imran Khan",
+    "Naveed Anjum"
+  ],
+  "FD": [
+    "Sheikhupura",
+    "Faisalabad",
+    "Multan",
+    "Gujranwala",
+    "Sahiwal",
+    "Lahore",
+    "Kasur"
+  ],
+  "M": [
+    {
+      "id": "Y01-3641715-SS1/1",
+      "code": "3641715",
+      "farmer": "Muhammad Aslam",
+      "father": "Rehmat Ullah",
+      "cnic": "3520212345671",
+      "contact": "0300-1234510",
+      "addr": "Chak 10, Tehsil Ferozewala, Sheikhupura",
+      "tehsil": "Ferozewala",
+      "dist": "Sheikhupura",
+      "div": "Lahore",
+      "firm": "Al-Faisal Agro",
+      "imei": "356938035643800",
+      "qicNo": "QIC-101",
+      "qicStatus": "Approved",
+      "qicDate": "2026-09-10",
+      "qicFE": "Ali Raza",
+      "lat": "31.50000",
+      "lng": "74.30000",
+      "dicNo": "DIC-201",
+      "dicStatus": "Approved",
+      "dicDate": "2026-09-20",
+      "dicFE": "Usman Tariq",
+      "dlat": "30.10000",
+      "dlng": "72.90000",
+      "reason": "",
+      "open": false,
+      "log": []
+    },
+    {
+      "id": "Y01-3641716-SS1/1",
+      "code": "3641716",
+      "farmer": "Riaz Ahmad",
+      "father": "Nazir Ahmad",
+      "cnic": "3520212356781",
+      "contact": "0300-1234511",
+      "addr": "Chak 11, Tehsil Jaranwala, Faisalabad",
+      "tehsil": "Jaranwala",
+      "dist": "Faisalabad",
+      "div": "Faisalabad",
+      "firm": "Punjab Implements",
+      "imei": "356938035643801",
+      "qicNo": "QIC-102",
+      "qicStatus": "Approved",
+      "qicDate": "2026-09-11",
+      "qicFE": "Ali Raza",
+      "lat": "31.52000",
+      "lng": "74.32000",
+      "dicNo": "DIC-202",
+      "dicStatus": "Approved",
+      "dicDate": "2026-09-21",
+      "dicFE": "Usman Tariq",
+      "dlat": "30.12500",
+      "dlng": "72.92500",
+      "reason": "",
+      "open": false,
+      "log": []
+    },
+    {
+      "id": "Y01-3641717-SS1/1",
+      "code": "3641717",
+      "farmer": "Ghulam Nabi",
+      "father": "Allah Ditta",
+      "cnic": "3520212367891",
+      "contact": "0300-1234512",
+      "addr": "Chak 12, Tehsil Shujabad, Multan",
+      "tehsil": "Shujabad",
+      "dist": "Multan",
+      "div": "Multan",
+      "firm": "Meezan Engineering",
+      "imei": "356938035643802",
+      "qicNo": "QIC-103",
+      "qicStatus": "Approved",
+      "qicDate": "2026-09-12",
+      "qicFE": "Ali Raza",
+      "lat": "31.54000",
+      "lng": "74.34000",
+      "dicNo": "",
+      "dicStatus": "",
+      "dicDate": "",
+      "dicFE": "",
+      "dlat": "",
+      "dlng": "",
+      "reason": "",
+      "open": false,
+      "log": []
+    },
+    {
+      "id": "Y01-3641718-SS1/1",
+      "code": "3641718",
+      "farmer": "Tahir Mehmood",
+      "father": "Mehmood Akhtar",
+      "cnic": "3520212379001",
+      "contact": "0300-1234513",
+      "addr": "Chak 13, Tehsil Kamoke, Gujranwala",
+      "tehsil": "Kamoke",
+      "dist": "Gujranwala",
+      "div": "Gujranwala",
+      "firm": "Umer Agricultural Industry",
+      "imei": "356938035643803",
+      "qicNo": "QIC-104",
+      "qicStatus": "Deferred",
+      "qicDate": "2026-09-13",
+      "qicFE": "Ali Raza",
+      "lat": "31.56000",
+      "lng": "74.36000",
+      "dicNo": "",
+      "dicStatus": "",
+      "dicDate": "",
+      "dicFE": "",
+      "dlat": "",
+      "dlng": "",
+      "reason": "Blade hardness below HRC 40",
+      "open": true,
+      "log": [
+        {
+          "t": "2026-09-13",
+          "who": "FE Ali Raza",
+          "m": "Tracker IMEI on certificate differs from device label"
+        }
+      ]
+    },
+    {
+      "id": "Y01-3641719-SS1/1",
+      "code": "3641719",
+      "farmer": "Zahid Iqbal",
+      "father": "Iqbal Hussain",
+      "cnic": "3520212390111",
+      "contact": "0300-1234514",
+      "addr": "Chak 14, Tehsil Chichawatni, Sahiwal",
+      "tehsil": "Chichawatni",
+      "dist": "Sahiwal",
+      "div": "Sahiwal",
+      "firm": "Kisan Machinery",
+      "imei": "356938035643804",
+      "qicNo": "",
+      "qicStatus": "",
+      "qicDate": "",
+      "qicFE": "",
+      "lat": "",
+      "lng": "",
+      "dicNo": "",
+      "dicStatus": "",
+      "dicDate": "",
+      "dicFE": "",
+      "dlat": "",
+      "dlng": "",
+      "reason": "",
+      "open": false,
+      "log": []
+    },
+    {
+      "id": "Y01-3641720-SS1/1",
+      "code": "3641720",
+      "farmer": "Shahid Ali",
+      "father": "Ghulam Rasool",
+      "cnic": "3520212401221",
+      "contact": "0300-1234515",
+      "addr": "Chak 15, Tehsil Raiwind, Lahore",
+      "tehsil": "Raiwind",
+      "dist": "Lahore",
+      "div": "Lahore",
+      "firm": "Punjab Implements",
+      "imei": "356938035643805",
+      "qicNo": "",
+      "qicStatus": "",
+      "qicDate": "",
+      "qicFE": "",
+      "lat": "",
+      "lng": "",
+      "dicNo": "",
+      "dicStatus": "",
+      "dicDate": "",
+      "dicFE": "",
+      "dlat": "",
+      "dlng": "",
+      "reason": "",
+      "open": false,
+      "log": []
+    },
+    {
+      "id": "Y01-3641721-SS1/1",
+      "code": "3641721",
+      "farmer": "Imran Khan",
+      "father": "Sher Khan",
+      "cnic": "3520212412331",
+      "contact": "0300-1234516",
+      "addr": "Chak 16, Tehsil Wazirabad, Gujranwala",
+      "tehsil": "Wazirabad",
+      "dist": "Gujranwala",
+      "div": "Gujranwala",
+      "firm": "Umer Agricultural Industry",
+      "imei": "356938035643806",
+      "qicNo": "",
+      "qicStatus": "",
+      "qicDate": "",
+      "qicFE": "",
+      "lat": "",
+      "lng": "",
+      "dicNo": "",
+      "dicStatus": "",
+      "dicDate": "",
+      "dicFE": "",
+      "dlat": "",
+      "dlng": "",
+      "reason": "",
+      "open": false,
+      "log": []
+    },
+    {
+      "id": "Y01-3641722-SS1/1",
+      "code": "3641722",
+      "farmer": "Naveed Anjum",
+      "father": "Anjum Butt",
+      "cnic": "3520212423441",
+      "contact": "0300-1234517",
+      "addr": "Chak 17, Tehsil Pattoki, Kasur",
+      "tehsil": "Pattoki",
+      "dist": "Kasur",
+      "div": "Lahore",
+      "firm": "Al-Faisal Agro",
+      "imei": "356938035643807",
+      "qicNo": "",
+      "qicStatus": "",
+      "qicDate": "",
+      "qicFE": "",
+      "lat": "",
+      "lng": "",
+      "dicNo": "",
+      "dicStatus": "",
+      "dicDate": "",
+      "dicFE": "",
+      "dlat": "",
+      "dlng": "",
+      "reason": "",
+      "open": false,
+      "log": []
+    }
+  ]
+}

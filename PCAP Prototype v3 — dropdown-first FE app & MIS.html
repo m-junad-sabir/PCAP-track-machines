@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>PCAP Prototype v2 — FE App & MIS Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f3f1ea;--card:#fff;--ink:#1c2620;--mut:#65706a;--line:#dcdad0;--g:#1f4d3a;--gl:#e3eee7;--w:#a87411;--wl:#f8ecd0;--r:#b3402e;--rl:#f7e0dc}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#141a16;--card:#1d2620;--ink:#e8ece9;--mut:#9aa69f;--line:#33403a;--g:#7fc29b;--gl:#243b2f;--w:#e0ad4a;--wl:#3b3218;--r:#e8806f;--rl:#40231e}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Source Sans 3",system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+header{display:flex;gap:8px;align-items:center;padding:12px 16px;background:#1f4d3a;color:#fff;flex-wrap:wrap}
+header b{font-size:17px;margin-right:auto}header span{opacity:.8;font-size:13px}
+.tabs button{background:transparent;border:1px solid #fff8;color:#fff;padding:6px 14px;border-radius:20px;cursor:pointer}.tabs button.on{background:#fff;color:#1f4d3a}
+main{max-width:1180px;margin:0 auto;padding:16px}
+.phone{width:100%;max-width:430px;margin:0 auto;background:var(--card);border:8px solid #222;border-radius:30px;overflow:hidden;display:flex;flex-direction:column}
+.bar{background:#1f4d3a;color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;font-weight:600}.bar small{font-weight:400;opacity:.85}
+.body{padding:14px;overflow:auto;height:640px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px}
+.btn{background:var(--g);color:var(--card);border:0;border-radius:8px;padding:10px 14px;width:100%;cursor:pointer;font-weight:600}
+.btn.alt{background:var(--gl);color:var(--g)}.btn.sm{width:auto;padding:6px 10px;font-size:13px}.btn:disabled{opacity:.4;cursor:not-allowed}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between}
+.tag{font-size:12px;padding:2px 8px;border-radius:10px;background:var(--gl);color:var(--g);white-space:nowrap}.tag.w{background:var(--wl);color:var(--w)}.tag.r{background:var(--rl);color:var(--r)}
+input[type=text],input[type=date],select,textarea{width:100%;padding:7px 8px;border:1px solid var(--line);border-radius:6px;background:var(--card)}
+label.chk{display:flex;gap:10px;padding:7px 0;align-items:flex-start}.fl{font-size:12.5px;color:var(--mut);display:block;margin:8px 0 2px}
+.stp{display:flex;gap:3px;margin-bottom:10px}.stp i{flex:1;height:5px;border-radius:3px;background:var(--line)}.stp i.d{background:var(--g)}
+.alert{background:var(--rl);color:var(--r);padding:9px;border-radius:8px;margin:8px 0;font-size:14px}.info{background:var(--wl);color:var(--w);padding:9px;border-radius:8px;margin:8px 0;font-size:14px}
+.ok{color:var(--g);font-weight:600}.bad{color:var(--r);font-weight:600}
+.ph{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ph button{background:var(--bg);border:1px dashed var(--mut);border-radius:8px;padding:8px 6px;font-size:12.5px;cursor:pointer;min-height:70px;text-align:left}.ph button.d{border:1px solid var(--g);background:var(--gl);color:var(--g)}
+h3{margin:0 0 8px;font-size:17px}h4{margin:12px 0 6px;font-size:14px;color:var(--mut)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.chips{display:flex;gap:5px;overflow-x:auto;padding-bottom:6px}.chips button{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:3px 10px;cursor:pointer;white-space:nowrap}.chips button.on{background:var(--g);color:var(--card)}
+.seg{display:flex;gap:6px;margin-top:6px}.seg button{flex:1;border:1px solid var(--line);background:var(--card);border-radius:6px;padding:5px;cursor:pointer}.seg .c.on{background:var(--gl);border-color:var(--g);color:var(--g);font-weight:600}.seg .n.on{background:var(--rl);border-color:var(--r);color:var(--r);font-weight:600}
+details{border:1px solid var(--line);border-radius:8px;margin-bottom:8px;padding:6px 10px}summary{cursor:pointer;font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:14px}.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}.kpi b{font-size:28px;display:block}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:14px}@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13.5px}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:top}
+tr.clk:hover td,tr.sel td{background:var(--gl);cursor:pointer}td.wrap{white-space:normal}
+.bars div{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:13px}.bars span{display:block;height:14px;background:var(--g);border-radius:3px}
+.nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}.nav button{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:6px 14px;cursor:pointer}.nav button.on{background:var(--g);color:var(--card);border-color:var(--g)}
+.filters{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center}.filters select{width:auto}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:8px;display:none;z-index:9;max-width:90%}
+.note{color:var(--mut);font-size:13px}
+</style></head><body>
+<header><b>PCAP Farm Machinery Monitoring</b><span>Prototype v3 · dropdown-first FE forms</span>
+<div class="tabs"><button id="t-app" onclick="tab('app')">FE app</button><button id="t-mis" onclick="tab('mis')">MIS portal</button></div></header>
+<main id="root"></main><div id="toast"></div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s==null?"":s).replace(/"/g,"&quot;"),D=k=>(S.d[k]==null?"":S.d[k]);
+/* ---------- Config: Super Seeder (49 parameters, Appendix-II) ---------- */
+const PR=`General|Application|Sow wheat or other crops in rice/maize or other stubble fields|
+General|Linkage Cat. II (Appendix-A dimensions)|T1 16-17, W3 50-65, T2 10-25, H 610-700, S 650-825 mm|T1 mm;W3 mm;T2 mm;H mm;S mm
+General|Working width|1950 mm|mm
+General|No. of rows|12 (11 inside + 1 outside)|Inside rows;Outside rows
+General|Rotor speed|215-300 rpm @ 540 PTO rpm|rpm
+General|Seed & fertilizer rate|Adjustable via calibrated screw-type side wheels|
+General|UJ shaft|1 No., 38-39 mm cross bearing|Bearing mm
+General|Tractor power|≥ 65 hp|
+General|Detachability|38 x 38 x 2-3 mm square pipe|Pipe mm;Thick mm
+Overall dimensions|Length|1600 mm|mm
+Overall dimensions|Width|2300 mm|mm
+Overall dimensions|Height|1400 mm|mm
+Frame assembly|Frame|MS square pipe 60x60 mm, 5-6 mm thick|Pipe mm;Thick mm
+Frame assembly|Side plates|MS plate 8-9 mm thick|Plate mm
+Frame assembly|Top cover|MS formed plate 3-4 mm thick|Plate mm
+Frame assembly|Top cover supports|MS 6-8 mm plates|Plate mm
+Frame assembly|Mast mounting brackets|MS 8-10 mm plates|Bracket mm
+Three-point hitch|Mast frame|MS plate 8-9 mm, yoke prongs 17 mm thick|Plate mm;Prong mm
+Three-point hitch|Lower hitch|MS clevis prongs 10 mm; CI clevis prongs 15-25 mm|MS mm;CI mm
+Power transmission|Gear box|Cast iron, air vent, two-speed, crown pinion and spur gear set|
+Power transmission|Power transmission shaft|60 mm dia (bearing size), safety cover pipe 3-4 mm wall, 2-4 clamps, bearing and oil seal|Dia mm;Pipe mm;Wall mm;Clamps nos.
+Power transmission|Side gear train|Three spur gears|
+Rotary hoe|Rotor pipe|Seamless MS pipe, OD 85-90 mm, wall 6 mm, forged axle ends|OD mm;Wall mm;Axle end
+Rotary hoe|Blade mounting plate|MS 230-235 mm dia, 10-12 mm thick|Dia mm;Thick mm
+Rotary hoe|Blades (hardness test on sub-sample)|54 Nos. J-type, HRC ≥ 40|Nos.;Type;HRC
+Rotary hoe|Parking stand (optional)|Telescopic 38x38x2-3 mm pipe or 38 mm dia GI/MS, 3 mm wall|Pipe mm;Thick mm
+Furrow opener / coulter|Coulter frame|MS square pipe 60x60 mm, 5-6 mm, adjustable with side plates|Pipe mm;Wall mm;Adjustable
+Furrow opener / coulter|Front coulter discs|2 Nos., 350-355 mm dia, 4-5 mm thick, adjustable depth|Material;Nos.;Dia mm;Thick mm;Adjustable
+Furrow opener / coulter|Furrow opener|22 Nos. SS coulters, dia 380 mm, 2.5-3.0 mm thick, pin 20-25 mm, adjustable placement with scrappers|Material;Nos.;Dia mm;Thick mm;Pin dia mm;Adjustable
+Seed & fertilizer|Seed & fertilizer box|MS 18-gauge, V-shape, two equal boxes, 60 kg each|Gauge;Shape;Volume kg
+Seed & fertilizer|Metering units|Fluted wheel type|Type;Material
+Seed & fertilizer|Drive wheel|Fabricated: rim 50x6, spokes 50x5, 550 dia, lugs. Formed: 4 mm, 550 dia|Type;Rim mm;Spoke mm;Dia mm;Thick mm
+Seed & fertilizer|Drive wheel transmission|Chain and sprockets 50#|Chain #;Pitch mm
+Seed & fertilizer|Fluted wheel drive shaft|2 Nos. 16-22 mm dia, MS pipe 2 mm wall or cold drawn solid shaft|Shaft type;Nos.;Dia mm;Thick mm
+Seed & fertilizer|Seed & fertilizer tube|Wire/nylon impregnated plastic tubes, clamped to metering units|
+Press roller|Press roller pipe and drive|Chain: OD 160-165, 4 mm wall, 60# chain, >55 rpm. Or gear drive >55 rpm|Drive type;OD mm;Thick mm;Pitch mm;Speed rpm;Gears
+Press roller|Rear roller|MS pipe 100 mm dia, 3 mm wall, adjustable, spring-loaded, soil scraper|OD mm;Thick mm;Adjustable;Spring loaded;Scraper
+Press roller|Skidders|Adjustable both sides, 12 mm thick MS flat, 60 mm wide|Thick mm;Width mm;Adjustable
+Press roller|Inspection platform|Textured/perforated sheet, two step|Type;Steps
+Tracking system|Tracker device|As specified by Department, internal lithium battery with charging system|
+Branding|Branding|Marking on one side of rotary hoe and on seed/fertilizer box mounting plate|
+Miscellaneous|Origin|Local|
+Miscellaneous|Accessories|Tool kit: insulated pliers, adjustable wrench, combination spanner set, chrome plated|
+Miscellaneous|O&M manual|English and Urdu|Draft approved
+Miscellaneous|Paint|Double coat red oxide/primer, Golden Yellow|Colour
+Miscellaneous|Nuts & bolts|Zinc coated, imported spring washers or lock nuts|Bolt coating;Washers;Lock nuts
+Miscellaneous|Bearings|European standard or equivalent (see Appendix-III)|
+Miscellaneous|Lubrication|Proper lubricant of requisite grade and quantity (see Appendix-IV)|
+Miscellaneous|Warranty|Free 1 year against mechanical defect; extended 5 years parts on payment|`.split("\n").map((l,i)=>{const a=l.split("|");return{n:i+1,g:a[0],name:a[1],req:a[2],f:a[3]?a[3].split(";"):[]}});
+const BR=`Multispeed gear box|Main drive shaft bearing
+Multispeed gear box|Pinion drive shaft bearing
+Multispeed gear box|Crown drive bearing
+Side gear train|Top gear bearing
+Side gear train|Middle gear bearing
+Rotary hoe|Drive end gear bearing
+Rotary hoe|Free end hub gear bearing (chain drive, press roller)
+Rotary hoe|Free end hub gear bearing (gear drive, press roller)
+Press roller (chain drive)|Press roller pipe bearings
+Press roller (chain drive)|Drive gear box bearings
+Press roller (chain drive)|Sprocket bearing
+Press roller (gear drive)|Press roller pipe bearings
+Press roller (gear drive)|Press roller gear box bearings
+Rear roller|Main pipe bearings
+Seed & fertilizer drive|Drive wheel hub bearing
+Seed & fertilizer drive|Sprockets bearing
+Seed & fertilizer drive|Metering units drive shaft bearings
+Coulter|Stainless steel coulters bearings
+Coulter|Front coulters bearing`.split("\n").map(l=>l.split("|"));
+const LU=["Multi-speed gear box","Side gear train","Press roller drive gear box (chain drive)","Free end bearing hub (chain drive, press roller)","Gear box of gear drive (press roller)"];
+const SAMP=[[100,5,0,2,0,"Up to 100"],[300,13,1,3,0,"101 to 300"],[500,32,3,5,0,"301 to 500"],[1000,50,5,8,1,"501 to 1000"],[1e9,80,7,13,1,"1001 and above"]];
+const QP=["Sign board of manufacturing firm","Machine with tracker under mast frame (nobody beside it)","UID plate with FE signature","Punched 7-digit code","Decoded UID-plate QR (farmer, father, CNIC, mobile, implement, firm, district)","Decoded tracker QR (farmer, CNIC, implement)","Decoded tracker QR (location + lat/long of firm)","QIC members with manufacturer, in front of machine"];
+const DP=["CNIC card of farmer or nominee (both sides)","Machine with tracker under mast (farmer/nominee beside it)","UID plate with FE signature","Punched 7-digit code","Decoded UID-plate QR","Decoded tracker QR (farmer, CNIC, implement)","Decoded tracker QR (location + lat/long of farmer)","DIC members with farmer, in front of machine"];
+const GATE={QIC:["UID plate with QR code is installed","7-digit punched code is present and same as digits on UID plate (after Y01, before SS1/1)","Tracking device installed under the mast frame"],DIC:["UID plate is NOT tampered (not re-riveted; QIC-stage FE signature in natural flow)","7-digit punched code is NOT tampered (no digit ground or re-punched)","Tracking device is installed under the mast frame"]};
+const QX=[["name","Farmer name",m=>m.farmer,["Printed on UID plate","Decoded UID-plate QR","Decoded tracker QR"]],["cnic","CNIC number",m=>m.cnic,["Decoded UID-plate QR","Decoded tracker QR"],/^\d{13}$/],["mid","Machine ID",m=>m.id,["Printed on UID plate","Decoded tracker QR","Inspection report (col. 5)"]],["imei","Tracker IMEI",m=>m.imei,["Label on tracking device"],/^\d{15}$/]];
+const DX=[["name","Farmer name",m=>m.farmer,["CNIC card","UID plate","Decoded UID QR","Decoded tracker QR"]],["cnic","CNIC number",m=>m.cnic,["CNIC card","Decoded UID QR","Decoded tracker QR"],/^\d{13}$/],["addr","Mailing address",m=>m.addr,["CNIC card","Decoded tracker QR"]],["mid","Machine ID",m=>m.id,["UID plate","Decoded tracker QR"]],["imei","Tracker IMEI",m=>m.imei,["Label on tracking device"],/^\d{15}$/]];
+const WZ={QIC:[["intim","Intimation"],["lot","Lot & firm"],["gate","Eligibility gate"],["samp","Sampling"],["chk","Technical worksheet"],["bear","Bearings & lubricants"],["x","Certificate cross-check"],["ph","Geo-tagged photos"],["sign","Sign-off"]],DIC:[["intim","Intimation"],["head","Verification header"],["gate","Tamper gate"],["chain","Chain of custody"],["x","Certificate cross-check"],["hand","Handover"],["ph","Geo-tagged photos"],["sign","Sign-off"]]};
+
+const T0="2026-09-28";
+const FIRMS={"Al-Faisal Agro":["Lahore","Ferozewala Road, Sheikhupura","31.7132","74.2312"],"Punjab Implements":["Faisalabad","Jaranwala Road, Faisalabad","31.4504","73.1350"],"Umer Agricultural Industry":["Gujranwala","GT Road, Gujranwala","32.1877","74.1945"],"Meezan Engineering":["Multan","Vehari Road, Multan","30.1575","71.5249"],"Kisan Machinery":["Sahiwal","Okara Road, Sahiwal","30.6682","73.1114"]};
+const CONVQ=["Engr. Khalid Mehmood","Engr. Rana Sajid","Engr. Nadeem Abbas"],CONVD=["Engr. Asif Nawaz","Engr. M. Tariq","Engr. Shahbaz Ahmad"];
+const LOTS=["25","50","75","100","150","200","250","300","400","500","750","1000","1500"];
+const CMP=["Matches","Does not match","Not legible"],XR=["Farmer name differs","CNIC differs","Address differs","Machine ID differs","IMEI differs","Punched code differs","Other"];
+const RSN=["Blade hardness below HRC 40","Dimensions out of specification","Welding / paint quality poor","Parameter missing or not as per spec","UID / tracker mismatch","Other"];
+const BQ=["1","2","3","4","6","8","10"],BN=["6204-2RS","6205-2RS","6206-2RS","6207-2RS","6208-2RS","6305-2RS","6306-2RS","30205","30206","Other"],BB=["SKF","FAG","NSK","NTN","Timken","Koyo","Local / other"],OG=["SAE 90","SAE 140","EP 90","EP 140","80W-90","85W-140","Other"],OQ=["0.5","1","1.5","2","2.5","3","4","5"];
+const FN=["Muhammad Aslam","Riaz Ahmad","Ghulam Nabi","Tahir Mehmood","Zahid Iqbal","Shahid Ali","Imran Khan","Naveed Anjum"],FD=["Sheikhupura","Faisalabad","Multan","Gujranwala","Sahiwal","Lahore","Kasur"];
+function setFirm(v){const f=FIRMS[v];S.d.firm=v;if(f){S.d.div=f[0];S.d.lat=f[2];S.d.lon=f[3]}render()}
+function pick(){const r=nS();if(!r)return null;const N=+S.d.lot,q=Math.max(1,Math.floor(N/r[1]));return{r,q,u:Array.from({length:r[1]},(_,i)=>{const x=(i+1)*q;return{uid:"Y01-"+(3700000+x)+"-SS1/1",farmer:FN[x%FN.length],dist:FD[x%FD.length]}})}}
+function allc(one){const P=pick();for(let i=1;i<=P.r[1];i++)if(!one||i==S.cs)PR.forEach(p=>S.d[`s${i}_${p.n}`]="c");render()}
+function allm(k,n){if(k=="*"){(S.mode=="QIC"?QX:DX).forEach(([kk,l,c,src])=>src.forEach((s,j)=>S.d[`x_${kk}_${j}`]="Matches"));S.d.x_cp="Matches UID plate code"}else for(let j=0;j<n;j++)S.d[`x_${k}_${j}`]="Matches";render()}
+function fillRows(){BR.forEach((_,i)=>{["bq","bn","bb"].forEach(k=>S.d[k+i]=S.d[k+"0"])});LU.forEach((_,i)=>{["og","oq"].forEach(k=>S.d[k+i]=S.d[k+"0"])});render()}
+function cap(a,b){const g=gps();S.d[a]=g.la;S.d[b]=g.lo;render()}
+/* ---------- Seed data ---------- */
+const NM=[["Muhammad Aslam","Rehmat Ullah","Ferozewala","Sheikhupura","Lahore","Al-Faisal Agro"],["Riaz Ahmad","Nazir Ahmad","Jaranwala","Faisalabad","Faisalabad","Punjab Implements"],["Ghulam Nabi","Allah Ditta","Shujabad","Multan","Multan","Meezan Engineering"],["Tahir Mehmood","Mehmood Akhtar","Kamoke","Gujranwala","Gujranwala","Umer Agricultural Industry"],["Zahid Iqbal","Iqbal Hussain","Chichawatni","Sahiwal","Sahiwal","Kisan Machinery"],["Shahid Ali","Ghulam Rasool","Raiwind","Lahore","Lahore","Punjab Implements"],["Imran Khan","Sher Khan","Wazirabad","Gujranwala","Gujranwala","Umer Agricultural Industry"],["Naveed Anjum","Anjum Butt","Pattoki","Kasur","Lahore","Al-Faisal Agro"]];
+const M=NM.map((a,i)=>({id:"Y01-"+(3641715+i)+"-SS1/1",code:""+(3641715+i),farmer:a[0],father:a[1],cnic:"35202"+(1234567+i*1111)+"1".slice(0,1)+i%10,contact:"0300-12345"+(10+i),addr:"Chak "+(10+i)+", Tehsil "+a[2]+", "+a[3],tehsil:a[2],dist:a[3],div:a[4],firm:a[5],imei:"356938035643"+(800+i),qicNo:"",qicStatus:"",qicDate:"",qicFE:"",lat:"",lng:"",dicNo:"",dicStatus:"",dicDate:"",dicFE:"",dlat:"",dlng:"",reason:"",open:false,log:[]}));
+M.forEach(m=>{m.cnic=(m.cnic+"0000000000000").slice(0,13)});
+[[0,"Approved","Approved"],[1,"Approved","Approved"],[2,"Approved",""],[3,"Deferred",""]].forEach(([i,q,d])=>{const m=M[i];Object.assign(m,{qicNo:"QIC-"+(101+i),qicStatus:q,qicDate:"2026-09-"+(10+i),qicFE:"Ali Raza",lat:(31.5+i/50).toFixed(5),lng:(74.3+i/50).toFixed(5),reason:q=="Deferred"?"Blade hardness below HRC 40":""});if(d)Object.assign(m,{dicNo:"DIC-"+(201+i),dicStatus:d,dicDate:"2026-09-"+(20+i),dicFE:"Usman Tariq",dlat:(30.1+i/40).toFixed(5),dlng:(72.9+i/40).toFixed(5)})});
+M[3].open=true;M[3].log.push({t:"2026-09-13",who:"FE Ali Raza",m:"Tracker IMEI on certificate differs from device label"});
+/* ---------- State ---------- */
+let S={tab:"app",view:"dash",mode:null,step:0,d:{},open:{},cs:1,sel:null,rep:"qs",f:{div:"",st:""}};
+function toast(m){const t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(()=>t.style.display="none",2800)}
+function tab(t){S.tab=t;render(1)}
+function render(top){const b=$(".body"),sc=b&&!top?b.scrollTop:0;$("#t-app").className=S.tab=="app"?"on":"";$("#t-mis").className=S.tab=="mis"?"on":"";$("#root").innerHTML=S.tab=="app"?app():mis();const nb=$(".body");if(nb)nb.scrollTop=sc;paint()}
+/* ---------- helpers ---------- */
+const I=(k,ph,ex)=>`<input type=text ${ex||""} placeholder="${esc(ph||"")}" value="${esc(D(k))}" oninput="S.d['${k}']=this.value;paint()">`;
+const F=(l,k,ph,ex)=>`<label class=fl>${l}</label>`+I(k,ph,ex);
+const SEL=(k,o)=>`<select onchange="S.d['${k}']=this.value;render()"><option value="">Select…</option>${o.map(x=>`<option ${D(k)==x?"selected":""}>${x}</option>`).join("")}</select>`;
+const CK=(k,l)=>`<label class=chk><input type=checkbox ${S.d[k]?"checked":""} onchange="S.d['${k}']=this.checked;render()">${l}</label>`;
+const norm=s=>String(s||"").trim().toLowerCase().replace(/\s+/g," ");
+const cur=()=>WZ[S.mode][S.step][0];
+const mch=()=>M.find(m=>m.id==S.d.mid);
+const nS=()=>{const r=SAMP.find(x=>+S.d.lot<=x[0]);return +S.d.lot>0?r:null};
+function gps(){return{la:(31.52+Math.random()/100).toFixed(5),lo:(74.35+Math.random()/100).toFixed(5),t:new Date().toTimeString().slice(0,5)}}
+/* ---------- FE app ---------- */
+function app(){let inner,title="Field Engineer · Ali Raza";
+if(!S.mode){const pend=M.filter(m=>m.qicStatus=="Approved"&&!m.dicStatus).length;inner=`<div class=row><b>Start new</b><span class="tag w">2 pending sync</span></div><div style="height:6px"></div>
+<button class=btn onclick="go('QIC')">QIC · inspect lot at manufacturer</button><div style="height:8px"></div><button class="btn alt" onclick="go('DIC')">DIC · verify machine at farmer (${pend} awaiting)</button>
+<div class=card style="margin-top:12px"><span class=note>Machine type</span><br><b>Super Seeder</b> <span class=tag>49 parameters · PSQCA Table A-1</span></div>
+<h4>Other FE assignments (questionnaires to be defined with PCAP)</h4>
+${[["Baseline survey","5,000 farmers"],["Midline survey","500 farmers, after 1 year"],["Endline survey","500 farmers, after 2 years"],["Rental subsidy TPV","1,000 farmers · Rs. 5,000/acre, max 25 acres"]].map(x=>`<div class=card><div class=row><b>${x[0]}</b><span class="tag w">Form pending</span></div><span class=note>${x[1]}</span></div>`).join("")}
+<h4>Upload status</h4><span class=note>Synced 14 · Pending 2 · Failed 0</span>`}
+else{const w=WZ[S.mode];title=S.mode+" · "+(S.mode=="QIC"?"at manufacturer":"at farmer");inner=`<div class=stp>${w.map((_,i)=>`<i class="${i<=S.step?"d":""}"></i>`).join("")}</div><div class=row><h3>${S.step+1}/${w.length} ${w[S.step][1]}</h3><button class="btn alt sm" onclick="auto()">Autofill demo</button></div>`+step()+nav()}
+return `<div class=phone><div class=bar><span>${title}</span><small>NESPAK · PCAP</small></div><div class=body>${inner}</div></div><p class=note style="text-align:center">Submissions appear in the MIS portal. “Autofill demo” fills a step with sample values.</p>`}
+function go(m){S.mode=m;S.step=0;S.d={cs:1,idate:T0,date:T0};S.cs=1;render(1)}
+function step(){const c=cur(),m=S.mode,d=S.d;
+if(c=="intim")return `<p class=note>Attend only with official intimation from the convener. Meeting date: today (auto).</p><label class=fl>How was the meeting notified?</label>${SEL("imode",["Official letter / meeting notice","E-mail","WhatsApp","Handwritten memo with official stamp","Telephone call","Voice message"])}${CK("iproof","Notice / proof sent to PM/TL")}${CK("isame",m=="QIC"?"Manufacturer is in the convener's district":"Farmer is in the convener's district")}<div class=info>${d.isame?"No TA/DA admissible (same jurisdiction).":"TA/DA admissible (outside convener's jurisdiction)."}</div>`;
+if(c=="lot"){const f=FIRMS[d.firm],r=nS();return `<label class=fl>Manufacturer</label><select onchange="setFirm(this.value)"><option value="">Select…</option>${Object.keys(FIRMS).map(x=>`<option ${d.firm==x?"selected":""}>${x}</option>`).join("")}</select>`+(f?`<div class=card style="margin-top:8px"><span class=note>Address (auto)</span><br>${f[1]}<br><span class=note>Division: ${f[0]}</span></div>`:"")+`<label class=fl>Convener of QIC</label>${SEL("conv",CONVQ)}<label class=fl>Size of lot offered</label>${SEL("lot",LOTS)}<button class="btn alt" style="margin-top:8px" onclick="cap('lat','lon')">Capture GPS (tracker QR of firm)</button>${d.lat?`<p class=note>GPS: ${d.lat}, ${d.lon}</p>`:""}`+(r?`<div class=info>Sample ${r[1]} (max ${r[2]} defective) · hardness sub-sample ${r[3]} (max ${r[4]})</div>`:"")}
+if(c=="head"){const pool=M.filter(x=>x.qicStatus=="Approved"&&!x.dicStatus&&(!d.dist||x.dist==d.dist));return `<label class=fl>District</label>${SEL("dist",[...new Set(M.filter(x=>x.qicStatus=="Approved"&&!x.dicStatus).map(x=>x.dist))])}<label class=fl>Convener of DIC</label>${SEL("conv",CONVD)}<label class=fl>Machine to verify</label><select onchange="S.d.mid=this.value;render()"><option value="">Select…</option>${pool.map(x=>`<option value="${x.id}" ${d.mid==x.id?"selected":""}>${x.id} · ${x.farmer}</option>`).join("")}</select>`+(mch()?`<div class=card style="margin-top:8px"><span class=note>Auto-filled from QIC record</span><br>${mch().farmer} s/o ${mch().father}<br>${mch().addr}</div>`:"")}
+if(c=="gate"){const ok=GATE[m].every((_,i)=>d["g"+i]);return `<p class=note>${m=="QIC"?"A machine is not entertained if any item fails.":"A machine is not entertained if tampering is found."}</p>`+GATE[m].map((g,i)=>CK("g"+i,g)).join("")+(ok?`<div class=info style="background:var(--gl);color:var(--g)">Machine is eligible.</div>`:`<div class=alert>Blocked. Inform the convener.</div>`)}
+if(c=="samp"){const P=pick();if(!P)return `<div class=alert>Select lot size first.</div>`;const r=P.r;return `<div class=card>Lot <b>${d.lot}</b> · band ${r[5]}<br>Visual & dimensional: <b>${r[1]}</b> samples (max ${r[2]} defective)<br>Blade hardness: <b>${r[3]}</b> sub-samples (max ${r[4]} defective)<br><span class=note>Every ${P.q}th machine picked automatically (r = ⌊${d.lot} ÷ ${r[1]}⌋).</span></div><div class=tw><table><tr><th>#</th><th>Unique ID</th><th>Farmer</th><th></th></tr>${P.u.map((x,i)=>`<tr><td>${i+1}</td><td>${x.uid}</td><td>${x.farmer}</td><td>${i<r[3]?`<span class=tag>HRC</span>`:""}</td></tr>`).join("")}</table></div>`+CK("sok","Samples drawn as listed (randomly, with the manufacturer)")}
+if(c=="chk")return chk();
+if(c=="bear")return CK("bskip","Already on file for this manufacturer (collected only once)")+(d.bskip?`<div class=info>Reusing stored Appendix-III / IV data.</div>`:`<button class="btn alt" onclick="fillRows()">Copy first row to all rows</button><h4>Bearings (Appendix-III)</h4>`+BR.map((b,i)=>`<div class=card><b>${b[1]}</b> <span class=note>${b[0]}</span><div class=g2 style="margin-top:6px">${SEL("bq"+i,BQ)}${SEL("bn"+i,BN)}</div>${SEL("bb"+i,BB)}</div>`).join("")+`<h4>Oil grade & quantity (Appendix-IV)</h4>`+LU.map((l,i)=>`<div class=card><b>${l}</b><div class=g2 style="margin-top:6px">${SEL("og"+i,OG)}${SEL("oq"+i,OQ)}</div></div>`).join(""));
+if(c=="x")return xstep();
+if(c=="chain"){const q=mch();return `<div class=card><span class=note>QIC record from central database</span><br><b>${q.id}</b><br>Inspected ${q.qicDate} by FE ${q.qicFE} · ${q.qicNo}<br>Punched code at QIC: <b>${q.code}</b><div class=g2 style="margin-top:6px"><div class=card style="margin:0;text-align:center"><small>QIC photo: UID plate + FE signature</small></div><div class=card style="margin:0;text-align:center"><small>QIC photo: code ${q.code}</small></div></div></div>`+CK("c0","FE signature on UID plate matches QIC photo (natural flow)")+CK("c1","Punched code matches QIC image")+CK("c2","UID plate not re-riveted")+((d.c0&&d.c1&&d.c2)?"":`<div class=alert>Any mismatch: machine not entertained. Defer.</div>`)}
+if(c=="hand"){const r=d.recv||"",nom=r[0]=="N";return `<label class=fl>Machine received by</label>${SEL("recv",["Allottee farmer (present)","Nominee with WhatsApp/written authorization","Nominee, no authorization; convener authorizes under signature"])}`+(nom?`<div class=row style="margin-top:8px"><span class=note>Receiver details</span><button class="btn alt sm" onclick="S.d.rname='Abdul Rehman';S.d.rcnic='3520211111111';render()">Scan CNIC</button></div>${d.rname?`<div class=card>${d.rname} · ${d.rcnic}</div>`:`<div class=g2 style="margin-top:6px">${I("rname","Name")}${I("rcnic","CNIC 13 digits","inputmode=numeric")}</div>`}<label class=fl>Relation with allottee</label>${SEL("rrel",["Son","Brother","Father","Relative","Employee / other"])}`:"")+(r.includes("WhatsApp")?CK("rauth","Authorization copy obtained from convener")+CK("rsent","Copy sent to the group"):"")+(r.includes("convener")?CK("rconv","Convener has signed that receiver is authorized")+`<div class=info>Mandatory: geo-tagged photo of receiver's CNIC (photo 1).</div>`:"")+`<button class="btn alt" style="margin-top:8px" onclick="cap('dla','dlo')">Capture farmer location (tracker QR)</button>${d.dla?`<p class=note>GPS: ${d.dla}, ${d.dlo}</p>`:""}`}
+if(c=="ph"){const P=m=="QIC"?QP:DP,n=P.filter((_,i)=>d["p"+i]).length;return `<p class=note>Tap to capture with GPS. ${n}/8 taken.</p><div class=ph>${P.map((p,i)=>{const g=d["p"+i];return `<button class="${g?"d":""}" onclick="S.d['p${i}']=S.d['p${i}']?null:gps();render()"><b>${i+1}.</b> ${p}${g?`<br><small>✓ ${g.la}N, ${g.lo}E · ${g.t}</small>`:""}</button>`}).join("")}</div>`}
+if(c=="sign")return signStep();return ""}
+function chk(){const P=pick();if(!P)return `<div class=alert>Select lot size first.</div>`;const n=P.r[1],cs=S.cs,o=outcome();
+let h=`<div class=row><span class=note>Sample ${cs}/${n} · ${P.u[cs-1].uid}</span><span class=note>${o.miss} unmarked</span></div><div class=g2 style="margin:6px 0"><button class="btn alt sm" onclick="allc(1)">All comply · this sample</button><button class="btn alt sm" onclick="allc(0)">All comply · all samples</button></div><div class=chips>${Array.from({length:n},(_,i)=>`<button class="${cs==i+1?"on":""}" onclick="S.cs=${i+1};render(1)">${i+1}</button>`).join("")}</div><p class=note>Tap “All comply”, then change only the exceptions.</p>`;
+let g="";PR.forEach(p=>{if(p.g!=g){if(g)h+="</details>";g=p.g;h+=`<details ${S.open[g]?"open":""} ontoggle="S.open['${g}']=this.open"><summary>${g}</summary>`}
+const s=S.d[`s${cs}_${p.n}`];h+=`<div class=card><b>${p.n}. ${p.name}</b><div class=note>Required: ${p.req}</div><div class=seg><button class="c ${s=="c"?"on":""}" onclick="S.d['s${cs}_${p.n}']='c';render()">Complies</button><button class="n ${s=="n"?"on":""}" onclick="S.d['s${cs}_${p.n}']='n';render()">Not complying</button></div>${p.f.length?`<details style="margin:6px 0 0"><summary class=note>Measured values (optional)</summary><div class=g2 style="margin-top:6px">${p.f.map((f,j)=>I(`o${cs}_${p.n}_${j}`,f)).join("")}</div></details>`:""}</div>`});
+return h+`</details><div class=card>Defective machines: ${o.vd} (max ${o.r[2]}) · hardness: ${o.hd} (max ${o.r[4]})</div>`}
+function outcome(){const r=nS();if(!r)return null;let vd=0,hd=0,miss=0;for(let i=1;i<=r[1];i++){let bad=false;PR.forEach(p=>{const s=S.d[`s${i}_${p.n}`];if(!s)miss++;else if(s=="n"&&p.n!=25)bad=true});if(bad)vd++}
+for(let i=1;i<=r[3];i++)if(S.d[`s${i}_25`]=="n")hd++;return{vd,hd,miss,r,ok:vd<=r[2]&&hd<=r[4]}}
+function xstep(){const D2=S.mode=="QIC"?QX:DX,q=S.mode=="QIC";let h="";
+if(q)h+=`<label class=fl>Certificate row (machine) to cross-check</label><select onchange="S.d.mid=this.value;render()"><option value="">Select…</option>${M.filter(x=>!x.qicStatus).map(x=>`<option value="${x.id}" ${S.d.mid==x.id?"selected":""}>${x.id} · ${x.farmer}</option>`).join("")}</select>`;
+const m=mch();if(!m)return h+`<div class=alert>Select a machine.</div>`;
+h+=`<div class=card style="margin-top:8px"><span class=note>Downloaded ${S.mode} certificate</span><br>1 ${m.farmer} · 2 ${m.cnic}<br>3 ${m.addr} · 4 ${m.tehsil}<br>5 ${m.id} · 6 ${m.imei}</div><div class=g2><button class="btn alt sm" onclick="allm('*')">Everything matches</button><button class="btn alt sm" onclick="auto(1)">Demo: IMEI mismatch</button></div><p class=note>For each source, compare with the certificate and choose. Tehsil is ignored${q?"; mailing address cannot be verified at QIC.":"."}</p>`;
+D2.forEach(([k,l,c,src])=>{h+=`<div class=card><div class=row><b>${l}</b><button class="btn alt sm" onclick="allm('${k}',${src.length})">All match</button></div><span class=note>Certificate: ${c(m)}</span>`+src.map((s,j)=>`<label class=fl>${s}</label>${SEL(`x_${k}_${j}`,CMP)}`).join("")+`</div>`});
+h+=`<div class=card><b>7-digit punched code</b><br><span class=note>Machine code vs digits on UID plate (after Y01, before SS1/1)</span>${SEL("x_cp",["Matches UID plate code","Does not match","Missing"])}</div>`;
+const x=xres();if(x.mis)h+=`<div class=alert>${x.mis} mismatch(es). ${q?"Inform the QIC convener; he corrects on the portal, or notes it on the certificate under signature and the machine is approved.":"The DIC convener cannot correct the certificate; he records it under signature and the machine is approved."}</div><label class=fl>Discrepancy</label>${SEL("xnote",XR)}${q?CK("xinf","QIC convener informed"):CK("xsigned","DIC convener has signed the note")}`;return h}
+function xres(){const m=mch();if(!m)return{mis:0,inc:1};let mis=0,inc=0;(S.mode=="QIC"?QX:DX).forEach(([k,l,c,src])=>src.forEach((s,j)=>{const v=D(`x_${k}_${j}`);if(!v)inc++;else if(v!="Matches")mis++}));const p=D("x_cp");if(!p)inc++;else if(p[0]!="M"||p.startsWith("Missing"))mis++;return{mis,inc}}
+function signStep(){const q=S.mode=="QIC",P=q?["Pass","Defer"]:["Approved","Deferred"],x=xres(),o=q?outcome():null;
+return (q&&o?`<div class="card ${o.ok?"":"bad"}">Worksheet: ${o.vd} defective (max ${o.r[2]}) · hardness ${o.hd} (max ${o.r[4]}) → <b>${o.ok?"lot conforms":"lot should be deferred"}</b></div>`:"")+(x.mis?`<div class=info>${x.mis} cross-check mismatch(es) will be flagged in the MIS.</div>`:"")+`<label class=fl>Committee decision</label><div class=seg>${P.map(v=>`<button class="c ${S.d.res==v?"on":""}" onclick="S.d.res='${v}';render()">${v}</button>`).join("")}</div>`+(/Def/.test(S.d.res||"")?`<label class=fl>Reason for deferment</label>${SEL("reason",RSN)}`:"")+F(q?"QIC certificate # (only typed entry)":"DIC certificate # (only typed entry)","cno","e.g. 305","inputmode=numeric")+CK("sign","I sign the certificate digitally as FE")+(q?CK("phys","Signed UID plate and machine frame with permanent marker"):"")+CK("wa","Report and UID-plate photo shared to group on WhatsApp")+`<p class=note>Summary and progress reports are generated automatically (Excel only).</p>`}
+/* ---------- gating ---------- */
+function can(){const c=cur(),m=S.mode,d=S.d;
+if(c=="intim")return d.imode&&d.iproof;
+if(c=="lot")return d.firm&&d.conv&&d.lot&&d.lat&&d.lon;
+if(c=="head")return d.dist&&d.conv&&d.mid;
+if(c=="gate")return GATE[m].every((_,i)=>d["g"+i]);
+if(c=="samp")return d.sok&&nS();
+if(c=="chk"){const o=outcome();return o&&!o.miss}
+if(c=="bear")return d.bskip||(BR.every((_,i)=>d["bq"+i]&&d["bn"+i]&&d["bb"+i])&&LU.every((_,i)=>d["og"+i]&&d["oq"+i]));
+if(c=="x"){const x=xres();if(x.inc)return false;return x.mis==0||(d.xnote&&(m=="QIC"?d.xinf:d.xsigned))}
+if(c=="chain")return d.c0&&d.c1&&d.c2;
+if(c=="hand"){const r=d.recv;if(!r||!d.dla)return false;if(r[0]=="A")return true;if(!d.rname||!/^\d{13}$/.test(d.rcnic||"")||!d.rrel)return false;return r.includes("WhatsApp")?d.rauth&&d.rsent:d.rconv&&d.p0}
+if(c=="ph")return Array.from({length:8}).every((_,i)=>d["p"+i]);
+if(c=="sign")return d.res&&d.cno&&d.sign&&(m=="DIC"||d.phys)&&(!/Def/.test(d.res)||d.reason)}
+function nav(){const l=S.step==WZ[S.mode].length-1;return `<div class=row style="margin-top:14px"><button class="btn alt" style="width:35%" onclick="back()">${S.step?"Back":"Cancel"}</button><button id=nx class=btn ${can()?"":"disabled"} onclick="next()">${l?"Submit":"Continue"}</button></div>`}
+function paint(){const b=$("#nx");if(b)b.disabled=!can()}
+function back(){if(!S.step)S.mode=null;else S.step--;render(1)}
+function next(){if(!can())return;if(S.step<WZ[S.mode].length-1){S.step++;return render(1)}submit()}
+function submit(){const m=mch(),q=S.mode=="QIC",x=xres(),ok=/Pass|Approved/.test(S.d.res),T="2026-09-28";
+if(q){const o=outcome();Object.assign(m,{qicNo:"QIC-"+S.d.cno,qicStatus:ok?"Approved":"Deferred",qicDate:S.d.date,qicFE:"Ali Raza",lat:S.d.lat,lng:S.d.lon,firm:S.d.firm,div:S.d.div,reason:S.d.reason||"",samples:o.r[1]})}
+else Object.assign(m,{dicNo:"DIC-"+S.d.cno,dicStatus:ok?"Approved":"Deferred",dicDate:S.d.date,dicFE:"Ali Raza",dlat:S.d.dla,dlng:S.d.dlo,reason:S.d.reason||m.reason,recv:S.d.recv});
+if(x.mis){m.open=true;m.log.push({t:T,who:"FE Ali Raza",m:S.mode+" cross-check: "+x.mis+" mismatch(es) flagged"+(!q&&S.d.xnote?" — "+S.d.xnote:"")})}
+toast(x.mis?"Submitted with discrepancy flag":"Submitted · synced to central database");S.mode=null;render(1)}
+function auto(mis){const c=cur(),q=S.mode=="QIC",d=S.d;
+if(c=="intim")Object.assign(d,{imode:"WhatsApp",iproof:true});
+if(c=="lot"){setFirm("Al-Faisal Agro");d.conv=CONVQ[0];d.lot="250"}
+if(c=="head")Object.assign(d,{dist:"Multan",conv:CONVD[0],mid:M.find(x=>x.qicStatus=="Approved"&&!x.dicStatus&&x.dist=="Multan").id});
+if(c=="gate")GATE[S.mode].forEach((_,i)=>d["g"+i]=true);
+if(c=="samp")d.sok=true;
+if(c=="chk")allc(0);
+if(c=="bear"){BR.forEach((_,i)=>{d["bq"+i]="2";d["bn"+i]="6206-2RS";d["bb"+i]="SKF"});LU.forEach((_,i)=>{d["og"+i]="SAE 90";d["oq"+i]="1.5"})}
+if(c=="x"){if(!d.mid)d.mid=M.find(x=>!x.qicStatus).id;allm("*");if(mis){d.x_imei_0="Does not match";d.xnote="IMEI differs"}}
+if(c=="chain")d.c0=d.c1=d.c2=true;
+if(c=="hand")Object.assign(d,{recv:"Allottee farmer (present)",dla:"30.1575",dlo:"71.5249"});
+if(c=="ph")for(let i=0;i<8;i++)d["p"+i]=gps();
+if(c=="sign")Object.assign(d,{res:q?"Pass":"Approved",cno:""+(300+Math.floor(Math.random()*90)),sign:true,phys:true,wa:true});
+render()}
+/* ---------- MIS portal ---------- */
+const NAV=[["dash","Dashboard"],["qic","QIC records"],["dic","DIC records"],["disc","Discrepancies"],["rep","Reports"],["cfg","Machine-type config"]];
+function mis(){return `<div class=nav>${NAV.map(n=>`<button class="${S.view==n[0]?"on":""}" onclick="S.view='${n[0]}';S.sel=null;render(1)">${n[1]}</button>`).join("")}</div>`+({dash,qic:()=>rec("qic"),dic:()=>rec("dic"),disc,rep,cfg}[S.view])()}
+const tg=x=>x?`<span class="tag ${x=="Approved"?"":x=="Deferred"?"r":"w"}">${x}</span>`:`<span class="tag w">—</span>`;
+function dash(){const a=M.filter(m=>m.qicStatus=="Approved").length,d=M.filter(m=>m.dicStatus=="Approved").length,ds=[...new Set(M.map(m=>m.div))],mx=Math.max(...ds.map(x=>M.filter(m=>m.div==x).length));
+return `<div class=kpis><div class=kpi><b>${M.length}</b>Machines tracked</div><div class=kpi><b>${M.filter(m=>m.qicStatus).length}</b>QIC inspected (${a} approved)</div><div class=kpi><b>${a-d}</b>Awaiting delivery</div><div class=kpi><b>${d}</b>DIC approved</div><div class=kpi><b>${M.filter(m=>m.open).length}</b>Open discrepancies</div></div>
+<div class=grid><div class=card><h3>Machine lifecycle (Inspected → Delivered)</h3><div class=tw><table><thead><tr><th>Machine</th><th>Farmer</th><th>District</th><th>Firm</th><th>QIC</th><th>DIC</th><th></th></tr></thead><tbody>${M.map(m=>`<tr class=clk onclick="S.view='qic';S.sel='${m.id}';render(1)"><td>${m.id}</td><td>${m.farmer}</td><td>${m.dist}</td><td>${m.firm}</td><td>${tg(m.qicStatus)}</td><td>${tg(m.dicStatus)}</td><td>${m.open?`<span class="tag r">flag</span>`:""}</td></tr>`).join("")}</tbody></table></div></div>
+<div class=card><h3>Machines by division</h3><div class=bars>${ds.map(x=>{const n=M.filter(m=>m.div==x).length;return `<div><span style="width:${n/mx*60}%;min-width:14px"></span>${x} (${n})</div>`}).join("")}</div><p class=note>Targets: 5,000 machines · 35 districts · 5 QIC divisions · 28 firms</p></div></div>`}
+function rec(w){const q=w=="qic",list=M.filter(m=>q?m.qicStatus:m.dicStatus),s=M.find(m=>m.id==S.sel);
+return `<div class=grid><div class=card><h3>${q?"QIC records":"DIC records"} <span class=note>(${list.length})</span></h3><div class=tw><table><thead><tr><th>Machine</th><th>Farmer</th><th>${q?"Division":"District"}</th><th>Cert #</th><th>Status</th><th>Date</th><th>FE</th></tr></thead><tbody>${list.map(m=>`<tr class="clk ${m.id==S.sel?"sel":""}" onclick="S.sel='${m.id}';render(1)"><td>${m.id}</td><td>${m.farmer}</td><td>${q?m.div:m.dist}</td><td>${q?m.qicNo:m.dicNo}</td><td>${tg(q?m.qicStatus:m.dicStatus)}</td><td>${q?m.qicDate:m.dicDate}</td><td>${q?m.qicFE:m.dicFE}</td></tr>`).join("")||"<tr><td>No records</td></tr>"}</tbody></table></div></div>${s?det(s):`<div class=card><span class=note>Select a record to see the linked QIC → DIC chain, certificate columns and log.</span></div>`}</div>`}
+function det(m){return `<div class=card><h3>${m.id}</h3><span class=note>Chain of custody: ${m.qicStatus?"QIC "+m.qicDate:"not inspected"} → ${m.dicStatus?"DIC "+m.dicDate:"not verified"}</span><h4>Certificate (6 columns)</h4><table>${[["Allottee",m.farmer],["CNIC",m.cnic],["Mailing address",m.addr],["Tehsil",m.tehsil],["Machine ID",m.id],["Tracker IMEI",m.imei],["Punched code",m.code],["QIC GPS (firm)",m.lat?m.lat+", "+m.lng:"—"],["DIC GPS (farmer)",m.dlat?m.dlat+", "+m.dlng:"—"],["Reason (if deferred)",m.reason||"—"]].map(r=>`<tr><td>${r[0]}</td><td class=wrap>${r[1]}</td></tr>`).join("")}</table><h4>Discrepancy / correction log</h4>${m.log.length?m.log.map(l=>`<div class=note>${l.t} · ${l.who}: ${l.m}</div>`).join(""):`<span class=note>No entries</span>`}</div>`}
+function disc(){const l=M.filter(m=>m.open);return `<div class=card><h3>Open discrepancies (${l.length})</h3>${l.map(m=>`<div class=card><b>${m.id}</b> · ${m.farmer}<br>${m.log.slice(-1)[0].m}<div class=filters style="margin-top:8px"><button class="btn alt sm" onclick="res('${m.id}','QIC convener corrected the record on the departmental portal')">Corrected by QIC convener</button><button class="btn alt sm" onclick="res('${m.id}','Convener noted it on the certificate under signature; machine approved')">Noted under convener signature</button></div></div>`).join("")||`<span class=note>No open discrepancies.</span>`}<p class=note>QIC discrepancies are corrected by the QIC convener; DIC discrepancies are recorded as a signed note. Nothing is overwritten; each action is appended to the log.</p></div>`}
+function res(id,t){const m=M.find(x=>x.id==id);m.log.push({t:"2026-09-28",who:"Project Lead",m:t});m.open=false;toast("Resolution logged");render(1)}
+function rep(){const T=[["qs","QIC summary"],["ds","DIC summary"],["qp","QIC progress (15 col.)"],["dp","DIC progress (15 col.)"]],w=S.rep;let h=`<div class=card><div class=filters>${T.map(t=>`<button class="btn sm ${w==t[0]?"":"alt"}" onclick="S.rep='${t[0]}';render(1)">${t[1]}</button>`).join("")}<select><option>Monthly</option><option>Quarterly</option><option>Annual</option></select><button class="btn sm" onclick="toast('Excel (.xlsx) export only, as per SOP. No PDF or image.')">Export Excel</button></div>`;
+const cnt=(a,f)=>[...new Set(a.map(f))].length;
+if(w=="qs"){const ds=[...new Set(M.filter(m=>m.qicStatus).map(m=>m.div))];h+=tbl(["Sr.","Division","QIC meetings held","Inspected","Approved","Deferred","Reason for deferment"],ds.map((d,i)=>{const a=M.filter(m=>m.qicStatus&&m.div==d);return[i+1,d,cnt(a,m=>m.qicDate+m.firm),a.length,a.filter(m=>m.qicStatus=="Approved").length,a.filter(m=>m.qicStatus=="Deferred").length,a.map(m=>m.reason).filter(x=>x).join("; ")||"—"]}))}
+if(w=="ds"){const ds=[...new Set(M.filter(m=>m.dicStatus).map(m=>m.dist))];h+=tbl(["Sr.","District","DIC meetings held","Verified","Approved","Deferred","Reason for deferment"],ds.map((d,i)=>{const a=M.filter(m=>m.dicStatus&&m.dist==d);return[i+1,d,cnt(a,m=>m.dicDate),a.length,a.filter(m=>m.dicStatus=="Approved").length,a.filter(m=>m.dicStatus=="Deferred").length,a.map(m=>m.reason).filter(x=>x).join("; ")||"—"]}))}
+if(w=="qp")h+=tbl(["Sr. No","Division","District","Firm Name","Farmer Name","CNIC","Contact No.","QIC Certificate #","Status of Inspection","Unique ID","GIS Lat.","GIS Lng.","Punched Code","Inspection Date","Name of FE"],M.filter(m=>m.qicStatus).map((m,i)=>[i+1,m.div,m.dist,m.firm,m.farmer,m.cnic,m.contact,m.qicNo,m.qicStatus,m.id,m.lat,m.lng,m.code,m.qicDate,m.qicFE]));
+if(w=="dp")h+=tbl(["Sr. No","District","Farmer Name","Father Name","CNIC #","Address","Contact No.","DIC Certificate #","Status of Verification","Unique ID","GPS Lat.","GPS Lng.","Punched Code","Inspection Date","Name of FE"],M.filter(m=>m.dicStatus).map((m,i)=>[i+1,m.dist,m.farmer,m.father,m.cnic,m.addr,m.contact,m.dicNo,m.dicStatus,m.id,m.dlat,m.dlng,m.code,m.dicDate,m.dicFE]));
+return h+`<p class=note>Built from live records. Progress reports export as Excel only.</p></div>`}
+function tbl(h,r){return `<div class=tw><table><thead><tr>${h.map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>${r.map(a=>`<tr>${a.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")||"<tr><td>No data</td></tr>"}</tbody></table></div>`}
+function cfg(){let g="",h="";PR.forEach(p=>{if(p.g!=g){if(g)h+="</table></details>";g=p.g;h+=`<details><summary>${g}</summary><table>`}h+=`<tr><td>${p.n}</td><td class=wrap><b>${p.name}</b><br><span class=note>${p.req}</span></td></tr>`});
+return `<div class=card><div class=row><h3>Super Seeder · v1</h3><button class="btn alt sm" onclick="toast('New machine types need their own approved specification and sampling scheme from PCAP')">+ Add machine type</button></div><p class=note>Parameters, sampling table and photo sets are data, not code. New machine types are onboarded here.</p></div>
+<div class=grid><div class=card><h3>49-parameter checklist (Appendix-II)</h3>${h}</table></details></div><div><div class=card><h3>PSQCA sampling (Table A-1)</h3>${tbl(["Lot","Sample","Max def.","Sub-sample","Max def."],SAMP.map(s=>[s[5],s[1],s[2],s[3],s[4]]))}</div><div class=card><h3>Required photos</h3><b>QIC</b><ol>${QP.map(p=>`<li class=note>${p}</li>`).join("")}</ol><b>DIC</b><ol>${DP.map(p=>`<li class=note>${p}</li>`).join("")}</ol></div></div></div>`}
+render(1);
+</script></body></html>
