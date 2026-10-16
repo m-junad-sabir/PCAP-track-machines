@@ -1,9 +1,40 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><title>PCAP Prototype v2 — FE App & MIS Portal</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css"></head><body>
-<header><b>PCAP Farm Machinery Monitoring</b><span>Prototype v3 · dropdown-first FE forms</span>
-<div class="tabs"><button id="t-app" onclick="tab('app')">FE app</button><button id="t-mis" onclick="tab('mis')">MIS portal</button></div></header>
-<main id="root"></main><div id="toast"></div>
-<script src="app.js" defer></script></body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>PCAP Farm Machinery Monitoring: Prototype v6</title>
+
+    <!-- Font (optional): the app falls back to the system font when offline -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- All colours, spacing and layout (see the numbered sections inside the file) -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Top bar: project title and the buttons that switch between the two apps.
+         "Reset demo" reloads the page, which restores the sample data. -->
+    <header>
+      <b>PCAP Farm Machinery Monitoring</b>
+      <span>Prototype v6 · real FE and manufacturer data</span>
+      <div class="tabs">
+        <button onclick="location.reload()">Reset demo</button>
+        <button id="t-app" onclick="tab('app')">FE app</button>
+        <button id="t-mis" onclick="tab('mis')">MIS portal</button>
+      </div>
+    </header>
+
+    <!-- Everything below the top bar is drawn by app.js into this element -->
+    <main id="root"></main>
+
+    <!-- Small pop-up message (shown by the toast() function in app.js) -->
+    <div id="toast"></div>
+
+    <!-- All the logic. "defer" runs it after the page above has loaded. -->
+    <script src="app.js" defer></script>
+  </body>
+</html>
