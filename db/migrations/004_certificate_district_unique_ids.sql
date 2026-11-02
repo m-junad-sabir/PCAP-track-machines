@@ -1,0 +1,42 @@
+-- Normalize seed and legacy certificate Unique IDs with the district short code.
+UPDATE certificates c
+SET unique_id = CASE d.name
+  WHEN 'Bahawalnagar' THEN 'BWN'
+  WHEN 'Bahawalpur' THEN 'BWP'
+  WHEN 'Bakhar' THEN 'BKR'
+  WHEN 'Chiniot' THEN 'CHN'
+  WHEN 'D.G. Khan' THEN 'DGK'
+  WHEN 'Faisalabad' THEN 'FSD'
+  WHEN 'Gujranwala' THEN 'GUJ'
+  WHEN 'Gujrat' THEN 'GRT'
+  WHEN 'Hafizabad' THEN 'HFZ'
+  WHEN 'Jhang' THEN 'JHG'
+  WHEN 'Kasur' THEN 'KSR'
+  WHEN 'Khanewal' THEN 'KWL'
+  WHEN 'Khushab' THEN 'KHB'
+  WHEN 'Kot Adu' THEN 'KTA'
+  WHEN 'Lahore' THEN 'LHR'
+  WHEN 'Layyah' THEN 'LYH'
+  WHEN 'Lodhran' THEN 'LDN'
+  WHEN 'M/Garh' THEN 'MGH'
+  WHEN 'Mandi B. Din' THEN 'MBD'
+  WHEN 'Mianwali' THEN 'MWI'
+  WHEN 'Multan' THEN 'MLT'
+  WHEN 'Nankana' THEN 'NNK'
+  WHEN 'Narowal' THEN 'NRW'
+  WHEN 'Okara' THEN 'OKR'
+  WHEN 'Pakpattan' THEN 'PKP'
+  WHEN 'Rahimyar Khan' THEN 'RYK'
+  WHEN 'Rajanpur' THEN 'RJP'
+  WHEN 'Sahiwal' THEN 'SWL'
+  WHEN 'Sargodha' THEN 'SGD'
+  WHEN 'Sheikhupura' THEN 'SKP'
+  WHEN 'Sialkot' THEN 'SKT'
+  WHEN 'Toba Tek Singh' THEN 'TTS'
+  WHEN 'Vehari' THEN 'VHR'
+  WHEN 'Wazirabad' THEN 'WZD'
+  WHEN 'Jhelum' THEN 'JHL'
+END || '-' || c.machine_id
+FROM districts d
+WHERE c.district_id = d.id
+  AND (c.unique_id IS NULL OR c.unique_id = c.machine_id OR c.unique_id LIKE 'FSD29-%');
